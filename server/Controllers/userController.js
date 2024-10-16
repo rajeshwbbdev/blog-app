@@ -10,7 +10,7 @@ const registerUser = async (req, res, next) => {
   try {
     const { name, email, password, password2 } = req.body;
     if (!name || !email || !password)
-      return next(new HtttpError("Fill in all fields", 422));
+      return next(new HttpError("Fill in all fields", 422));
     const newEmail = email.toLowerCase();
     const existsEmail = await User.findOne({ email: newEmail });
     if (existsEmail) return next(new HttpError("Email already exists", 422));
